@@ -6,14 +6,16 @@ pipeline {
         MYSQL_DATABASE = 'testdb'                      // Database name to be created in the MySQL container
         SPRING_DATASOURCE_URL = ''                     // Set in Start MySQL stage
         SPRING_DATASOURCE_USERNAME = 'root'            // Username for MySQL
-        SPRING_DATASOURCE_PASSWORD = 'root'            // Password for MySQL
+        SPRING_DATASOURCE_PASSWORD = 'root'
+        GIT_CREDENTIALS = credentials('bcee23ca-444a-4035-81b2-2062c3178ff7') // Replace with your credentials ID
+// Password for MySQL
     }
 
     stages {
         stage('Checkout') {
             steps {
                 // Clone the repository
-                git branch: 'master', url: 'https://github.com/Ahmeddhibi19/e-com-server.git'
+                git credentialsId: 'bcee23ca-444a-4035-81b2-2062c3178ff7', url: 'https://github.com/Ahmeddhibi19/e-com-server.git'
             }
         }
 
